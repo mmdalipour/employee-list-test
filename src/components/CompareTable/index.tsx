@@ -7,6 +7,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
+import Paper from '@material-ui/core/Paper';
 
 // providers
 import { Compare, useCompareValue } from 'providers/CompareProvider';
@@ -38,37 +39,39 @@ function CompareTable({}: CompareTableProps) {
     );
 
   return (
-    <TableContainer>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell></TableCell>
-            {compare.map((item) => (
-              <TableCell>{item?.employee_name}</TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {/* start age row */}
-          <TableRow>
-            <TableCell>Age</TableCell>
-            {filteredAge.map((age) => (
-              <TableCell>{age}</TableCell>
-            ))}
-          </TableRow>
-          {/* end age row */}
+    <Paper elevation={2}>
+      <TableContainer>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell></TableCell>
+              {compare.map((item) => (
+                <TableCell>{item?.employee_name}</TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {/* start age row */}
+            <TableRow>
+              <TableCell>Age</TableCell>
+              {filteredAge.map((age) => (
+                <TableCell>{age}</TableCell>
+              ))}
+            </TableRow>
+            {/* end age row */}
 
-          {/* start salary row */}
-          <TableRow>
-            <TableCell>Salary</TableCell>
-            {filteredSalary.map((salary) => (
-              <TableCell>{`$${salary}`}</TableCell>
-            ))}
-          </TableRow>
-          {/* end salary row */}
-        </TableBody>
-      </Table>
-    </TableContainer>
+            {/* start salary row */}
+            <TableRow>
+              <TableCell>Salary</TableCell>
+              {filteredSalary.map((salary) => (
+                <TableCell>{`$${salary}`}</TableCell>
+              ))}
+            </TableRow>
+            {/* end salary row */}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Paper>
   );
 }
 
