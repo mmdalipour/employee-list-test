@@ -1,25 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider } from "@material-ui/core/styles";
+
+import { QueryClient, QueryClientProvider } from "react-query";
+
+// components
+import Compose, { ComposeComponent } from "components/Compose";
+import CssBaseline from "@material-ui/core/CssBaseline";
+
+// templates
+import DefualtTemplate from "templates/DefaultTemplate";
+
+// pages
+import HomePage from "pages/Home";
+
+// providers
+import { CompareProvider } from "providers/CompareProvider";
+
+// themes
+import theme from "themes/default";
+
+const queryClient = new QueryClient();
+
+// initial providers (only non dynamic providers)
+const providers: ComposeComponent[] = [
+  [ThemeProvider, { theme }],
+  [QueryClientProvider, { client: queryClient }],
+  CompareProvider,
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Compose components={providers}>
+      <CssBaseline />
+      <DefualtTemplate>
+        <HomePage />
+      </DefualtTemplate>
+    </Compose>
   );
 }
 
