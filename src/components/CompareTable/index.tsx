@@ -46,7 +46,7 @@ function CompareTable({}: CompareTableProps) {
             <TableRow>
               <TableCell></TableCell>
               {compare.map((item) => (
-                <TableCell>{item?.employee_name}</TableCell>
+                <TableCell key={item?.id}>{item?.employee_name}</TableCell>
               ))}
             </TableRow>
           </TableHead>
@@ -54,8 +54,8 @@ function CompareTable({}: CompareTableProps) {
             {/* start age row */}
             <TableRow>
               <TableCell>Age</TableCell>
-              {filteredAge.map((age) => (
-                <TableCell>{age}</TableCell>
+              {filteredAge.map((age, index) => (
+                <TableCell key={index}>{age}</TableCell>
               ))}
             </TableRow>
             {/* end age row */}
@@ -63,8 +63,8 @@ function CompareTable({}: CompareTableProps) {
             {/* start salary row */}
             <TableRow>
               <TableCell>Salary</TableCell>
-              {filteredSalary.map((salary) => (
-                <TableCell>{`$${salary}`}</TableCell>
+              {filteredSalary.map((salary, index) => (
+                <TableCell key={index}>{`$${salary}`}</TableCell>
               ))}
             </TableRow>
             {/* end salary row */}
